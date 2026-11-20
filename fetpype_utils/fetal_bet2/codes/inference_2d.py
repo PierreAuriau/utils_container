@@ -100,7 +100,7 @@ class FetalTestData:
 
     def load_data(self):
         test_transforms_list = self.transformations()
-        test_images = sorted(glob(os.path.join(self.test_data_paths, "*.nii.gz")))
+        test_images = sorted(glob(os.path.join(self.test_data_paths, "*.nii.gz")) + glob(os.path.join(self.test_data_paths, "*.nii")))
 
         test_files = [{"image": image_name} for image_name in test_images]
 

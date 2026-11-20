@@ -233,7 +233,7 @@ def inference(args):
         roi_size=ROI_SIZE, sw_batch_size=sw_batch_size, overlap=0.25, mode="gaussian"
     )
 
-    nii_files = sorted(glob(os.path.join(args.data_path, "*.nii.gz")))
+    nii_files = sorted(glob(os.path.join(args.data_path, "*.nii.gz")) + glob(os.path.join(args.data_path, "*.nii")))
     if not nii_files:
         raise FileNotFoundError(f"No .nii.gz files found under: {args.data_path}")
 

@@ -155,7 +155,7 @@ def inference(args):
         raise FileNotFoundError(f"--input_path not found: {args.input_path}")
 
     if os.path.isdir(args.input_path):
-        all_paths = sorted(glob(os.path.join(args.input_path, "*.nii.gz")))
+        all_paths = sorted(glob(os.path.join(args.input_path, "*.nii.gz")) + glob(os.path.join(args.input_path, "*.nii")))
         # Skip this tool's own output naming convention so re-running on a save_path==input_path
         # directory doesn't reprocess a previous run's masks as new input.
         paths = [p for p in all_paths if not os.path.basename(p).endswith("_mask.nii.gz")]
@@ -170,7 +170,6 @@ def inference(args):
         for path in paths:
             pipeline, _ = resolve_pipeline(path, args.pipeline)
             groups.setdefault(pipeline, []).append(path)
-
         total_elapsed = 0.0
         for pipeline, group_paths in groups.items():
             print(f"[inference.py] {len(group_paths)} file(s) -> pipeline = {pipeline}", flush=True)

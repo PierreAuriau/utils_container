@@ -112,7 +112,7 @@ class NiftiVolumeDataset:
 
 
 def load_data(data_path, transforms_list, num_workers=0):
-    images = sorted(glob(os.path.join(data_path, "*.nii.gz")))
+    images = sorted(glob(os.path.join(data_path, "*.nii.gz")) + glob(os.path.join(data_path, "*.nii")))
     if not images:
         raise FileNotFoundError(f"No .nii.gz files found under: {data_path}")
 
