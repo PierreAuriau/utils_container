@@ -16,7 +16,10 @@ from tqdm import tqdm
 
 from mask_refine import detect_slice_axis, refine_volume
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
+from fetpype_utils.fetal_bet2 import MODEL_CKPT_DIR
+
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+
 
 
 class RefineMaskd(MapTransform):
@@ -272,7 +275,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--saved_model_path',
                         type=str,
-                        default=str(PROJECT_DIR / "models_ckpt" / "fetbet2_AttUNet2D.pth"),
+                        default=str(MODEL_CKPT_DIR / "fetbet2_AttUNet2D.pth"),
                         help='path to the saved model')
 
     parser.add_argument('--data_path',

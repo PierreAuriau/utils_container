@@ -27,8 +27,10 @@ from tqdm import tqdm
 
 from mask_refine import detect_slice_axis, refine_volume
 
+from fetpype_utils.fetal_bet2 import MODEL_CKPT_DIR
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent
-MODEL_PATH = PROJECT_DIR / "models_ckpt" / "fetbet2_AttUNet4D.pth"
+MODEL_PATH = PROJECT_DIR / "Docker" / "src" / "models" / "AttUNet4D.pth"
 ROI_SIZE = (224, 224, 128)
 
 
@@ -275,7 +277,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--saved_model_path",
         type=str,
-        default=str(MODEL_PATH),
+        default=str(MODEL_CKPT_DIR / "fetbet2_AttUNet4D.pth"),
         help="Path to the saved 3D model checkpoint"
     )
 

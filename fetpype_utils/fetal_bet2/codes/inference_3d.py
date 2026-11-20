@@ -25,6 +25,8 @@ from tqdm import tqdm
 
 from mask_refine import refine_volume_isotropic
 
+from fetpype_utils.fetal_bet2 import MODEL_CKPT_DIR
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 VOXEL_SPACING = (0.8, 0.8, 0.8)
@@ -206,7 +208,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--checkpoint', type=str,
-                         default=str(PROJECT_DIR / "models_ckpt" / "fetbet2_AttUNet3D.pth"),
+                         default=str(MODEL_CKPT_DIR / "fetbet2_AttUNet3D.pth"),
                          help='path to a trained checkpoint (.pth)')
 
     parser.add_argument('--data_path', type=str, required=True,
