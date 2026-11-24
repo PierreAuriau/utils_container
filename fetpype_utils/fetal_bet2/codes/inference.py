@@ -134,6 +134,9 @@ def run_pipeline_group(pipeline, paths, save_path, args):
 def _mask_path_for(input_path, save_path):
     """The dispatched scripts all save as "<input stem>_mask.nii.gz" (SaveImaged's
     output_postfix="mask" for 2D/3D, the same convention hardcoded in inference_4d.py)."""
+    if input_path.endswith(".nii"):
+        os.path.basename(input_path)[: -len(".nii")]
+        return os.path.join(save_path, f"{stem}_mask.nii")
     stem = os.path.basename(input_path)[: -len(".nii.gz")]
     return os.path.join(save_path, f"{stem}_mask.nii.gz")
 
