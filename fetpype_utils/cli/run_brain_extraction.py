@@ -77,7 +77,6 @@ def run_brain_extraction(in_files, out_dir, out_masks, method, device):
         run_inference(in_files, config)
     elif method == "fet_bet2":
         from fetpype_utils.fetal_bet2.codes.inference import inference
-        import torch
 
         # Make it a Namespace
         from types import SimpleNamespace
