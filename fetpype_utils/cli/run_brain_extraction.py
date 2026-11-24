@@ -119,16 +119,22 @@ def run_brain_extraction(in_files, out_dir, out_masks, method, device):
     # Then take the out_dir / in_files and rename them:
     if out_masks is None:
         for f in in_files:
-            out_name = os.path.join(out_dir, os.path.basename(f))
-            out_rename = out_name.replace("_T2w", "_mask")
+            if method == "fet_bet2":
+                # Fetal_bet2 method already adds _mask suffix but does not remove _T2w suffix
+                out_name = os.path.join(out_dir, os.path.basename(f).replace(".nii", "_mask.nii"))
+                out_rename = out_name.replace("_T2w", "")
+            else:
+                out_name = os.path.join(out_dir, os.path.basename(f))
+                out_rename = out_name.replace("_T2w", "_mask")
             # move the file
-            if os.path.isfile(out_name):
-                os.rename(out_name, out_rename)
+            os.rename(out_name, out_rename)
     else:
         for f, m in zip(in_files, out_masks):
-            out_name = os.path.join(out_dir, os.path.basename(f))
-            if os.path.isfile(out_name):
-                os.rename(out_name, m)
+            if method == "fet_bet2":
+                out_name = os.path.join(out_dir, os.path.basename(f).replace(".nii", "_mask.nii"))
+            else:
+                out_name = os.path.join(out_dir, os.path.basename(f))
+            os.rename(out_name, m)
 
 
 def main():
