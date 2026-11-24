@@ -4,7 +4,7 @@ These tools are not novel and were not created by us, but this repository merely
 
 This folder contains the following methods:
 
-- `run_brain_extraction`: Brain extraction using [MONAIfbs](https://github.com/gift-surg/MONAIfbs) (the code was updated to work with more recent MONAI versions) and [fet-bet](https://github.com/IntelligentImaging/fetal-brain-extraction).
+- `run_brain_extraction`: Brain extraction using: [MONAIfbs](https://github.com/gift-surg/MONAIfbs) (the code was updated to work with more recent MONAI versions), [fet-bet](https://github.com/IntelligentImaging/fetal-brain-extraction) and [fetal-bet2](https://github.com/IntelligentImaging/fetal-bet2).
 - `run_denoising`: Image denoising using ANTS' DenoiseImage.
 - `run_bias_field_correction`: Bias field correction using ANTS' implementation of the N4 algorithm.
 
